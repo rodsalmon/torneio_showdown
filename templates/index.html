@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu site</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+    h1 { color: #222; }
+    form { margin-bottom: 24px; }
+    input, textarea { width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; }
+    button { padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .registro { border-bottom: 1px solid #ddd; padding: 10px 0; }
+    .registro strong { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>Meu site</h1>
+
+  <form method="POST">
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <h2>Registros ({{ registros|length }})</h2>
+  {% for r in registros %}
+    <div class="registro">
+      <strong>{{ r.nome }}</strong>: {{ r.mensagem }}
+    </div>
+  {% else %}
+    <p>Nenhum registro ainda.</p>
+  {% endfor %}
+</body>
+</html>
